@@ -1,0 +1,5 @@
+com\pageElements\OrangeHRMLoginPageElement.class
+com\util\TestDataObject.class
+com\pageEvents\OrangeHRMLoginPageEvent.class
+com\util\GlobalVariables.class
+com\pageEvents\WebFormPage.class
