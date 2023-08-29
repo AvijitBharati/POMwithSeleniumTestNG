@@ -17,7 +17,7 @@ public class OrangeHRMLoginPageEvent implements OrangeHRMLoginPageElement{
     @FindBy(xpath = OrangeHRMLoginPageElement.password)
     WebElement password;
 
-    @FindBy(xpath = OrangeHRMLoginPageElement.password)
+    @FindBy(xpath = OrangeHRMLoginPageElement.loginButton)
     WebElement login;
 
     public OrangeHRMLoginPageEvent(WebDriver driver){
@@ -30,8 +30,8 @@ public class OrangeHRMLoginPageEvent implements OrangeHRMLoginPageElement{
         userName.sendKeys(testdata.getUserName());
         password.clear();
         password.sendKeys(testdata.getPassword());
-        Thread.sleep(2000);
-        login.clear();
+        login.click();
+        Thread.sleep(3000);
     }
 
 }
