@@ -36,8 +36,7 @@ public class GlobalVariables {
         System.setProperty("webdriver.chrome.driver",prop.getProperty("chromedriverPath"));
         driver=new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(prop.getProperty(appName));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
     }
     public int readTestData(){

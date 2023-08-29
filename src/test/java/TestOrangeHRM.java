@@ -1,23 +1,26 @@
+import com.pageEvents.OrangeHRMDashboardPageEvent;
 import com.pageEvents.OrangeHRMLoginPageEvent;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.util.GlobalVariables;
 import com.util.TestDataObject;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TestOrangeHRM extends Hook{
     GlobalVariables globalVar=new GlobalVariables();
     OrangeHRMLoginPageEvent newLoginPageEvent;
-    ExtentTest test;
+    OrangeHRMDashboardPageEvent newDashboardEvent;
 
     @Test(dataProvider="orangedata")
     public void testOrangeHRM(TestDataObject testData) throws InterruptedException{
-        test=report.startTest("OrangeScenario");
         newLoginPageEvent=new OrangeHRMLoginPageEvent(driver);
+        testExtent.log(LogStatus.INFO,"Login Start");
         newLoginPageEvent.logIn(testData);
-        test.log(LogStatus.INFO,"Login Complete");
-        report.endTest(test);
+        newDashboardEvent=new OrangeHRMDashboardPageEvent(driver);
+        Assert.assertEquals(true,newDashboardEvent.validateDashboard());
+        testExtent.log(LogStatus.INFO,"Login Complete");
     }
 
     @DataProvider(name="orangedata")
@@ -29,8 +32,6 @@ public class TestOrangeHRM extends Hook{
         }
         return testData;
     }
-
-
 
 }
 
